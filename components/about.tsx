@@ -1,7 +1,6 @@
 "use client"
 
 import { useRef } from "react"
-import Image from "next/image"
 import { Card, CardContent } from "@/components/ui/card"
 import { motion, useInView } from "framer-motion"
 import { Code, Globe, Lightbulb, Rocket } from "lucide-react"
@@ -49,19 +48,16 @@ export default function About() {
 
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <motion.div variants={itemVariants} className="relative">
-              <div className="relative z-10 rounded-2xl overflow-hidden border-4 border-black shadow-2xl">
-                <Image
-                  src="https://www.syva.uk/svya-dev/img/profile.png"
+                <div className="relative z-10 rounded-2xl overflow-hidden border-4 border-black shadow-2xl">
+                <img
+                  src="/syva-dev/img/profile.png"
                   alt="Profile"
                   width={600}
                   height={600}
                   className="object-cover w-full aspect-square"
-                  priority
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
-              </div>
-
-              {/* Decorative elements */}
+                </div>
               <div className="absolute -top-6 -left-6 w-24 h-24 bg-red-500/20 rounded-full blur-xl" />
               <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-red-700/20 rounded-full blur-xl" />
 

@@ -1,7 +1,6 @@
 "use client"
 
 import { useRef } from "react"
-import Image from "next/image"
 import { Card, CardContent } from "@/components/ui/card"
 import { motion, useInView } from "framer-motion"
 import { Quote } from "lucide-react"
@@ -44,28 +43,28 @@ export default function Testimonials() {
       name: "Astral",
       role: "Watcher",
       company: "None",
-      image: "http://www.syva.uk/svya-dev/img/astral.png",
+      image: "/syva-dev/img/astral.png",
       quote:
-        "Looks absolutely fantastic! Honestly, it's one of the most impressive things I've seen. The design, functionality, and attention to detail are unmatched. It’s clear a lot of thought and effort went into making it not only aesthetically pleasing but also user-friendly and intuitive. I’m truly blown away by how well everything comes together – this is definitely something special!",
+        "Looks absolutely fantastic! Honestly, it's one of the most impressive things I've seen. The design, functionality, and attention to detail are unmatched. It's clear a lot of thought and effort went into making it not only aesthetically pleasing but also user-friendly and intuitive. I'm truly blown away by how well everything comes together – this is definitely something special!",
     },
     {
       id: 2,
       name: "Zombieslayerop",
       role: "Discord: Dragon Soul - Moderator",
       company: "None",
-      image: "http://www.syva.uk/svya-dev/img/zombieslayerop.png",
+      image: "/syva-dev/img/zombieslayerop.png",
       quote:
-        "Wow, this is incredible! The level of innovation and creativity is off the charts. The features are so well thought out, and the overall experience is seamless. It’s clear that a lot of hard work went into this, and it really shows. I’ve seen similar projects before, but this one stands out by far. It’s both impressive and inspiring to see something so well-executed!",
+        "Wow, this is incredible! The level of innovation and creativity is off the charts. The features are so well thought out, and the overall experience is seamless. It's clear that a lot of hard work went into this, and it really shows. I've seen similar projects before, but this one stands out by far. It's both impressive and inspiring to see something so well-executed!",
     },
     {
       id: 3,
       name: "Jazzy",
       role: "In Relationship with syva-dev (twinlight024)",
       company: "None",
-      image: "http://www.syva.uk/svya-dev/img/jazzy.png",
+      image: "/syva-dev/img/jazzy.png",
       quote:
-        "You are worth more than words can express. Not only do you have incredible talent and brilliant intelligence, but you also have a heart of gold. Your creativity and dedication to everything you do are truly inspiring. You have this unique way of seeing things and turning them into something amazing. I admire your strength, your passion, and your ability to make the best of every situation. You are an invaluable treasure to me, and I’m so thankful to have you in my life.",
-    }
+        "You are worth more than words can express. Not only do you have incredible talent and brilliant intelligence, but you also have a heart of gold. Your creativity and dedication to everything you do are truly inspiring. You have this unique way of seeing things and turning them into something amazing. I admire your strength, your passion, and your ability to make the best of every situation. You are an invaluable treasure to me, and I'm so thankful to have you in my life.",
+    },
   ]
 
   return (
@@ -97,11 +96,10 @@ export default function Testimonials() {
                     <Quote className="absolute top-6 right-6 w-12 h-12 text-red-500/10" />
                     <div className="flex items-center gap-4 mb-6">
                       <div className="relative w-16 h-16 rounded-full overflow-hidden border-2 border-red-500/20">
-                        <Image
+                        <img
                           src={testimonial.image || "/placeholder.svg"}
                           alt={testimonial.name}
-                          fill
-                          className="object-cover"
+                          className="object-cover w-full h-full"
                         />
                       </div>
                       <div>

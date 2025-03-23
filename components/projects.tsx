@@ -3,7 +3,6 @@
 import type React from "react"
 
 import { useRef, useState, useEffect } from "react"
-import Image from "next/image"
 import {
   ExternalLink,
   Github,
@@ -119,11 +118,11 @@ export default function Projects() {
       title: "Bunny Hub",
       description:
         "Bunny Hub is a Lua script that is loaded into the game via an executor. It provides a custom GUI with pre-made scripts and a built-in editor for custom scripting.",
-      image: "https://www.syva.uk/svya-dev/img/bunny-hub.png",
+      image: "/syva-dev/img/bunny-hub.png",
       tags: ["Lua", "Roblox"],
       technologies: ["Lua", "Roblox"],
       features: ["Custom GUI", "Pre-made scripts", "Built-in editor"],
-      demoUrl: "https://www.syva.uk/error/",
+      demoUrl: "/error/",
       repoUrl: "https://github.com/Rich0242/Roblox-multi-script",
       featured: true,
       category: "game",
@@ -133,11 +132,11 @@ export default function Projects() {
       title: "Main Domain - Role Application System",
       description:
         "A platform where users can apply for roles on a Discord server. This is the main domain for the application system, built using JavaScript, React, PHP, and SQL. Users can easily submit their applications and join the community.",
-      image: "https://www.syva.uk/svya-dev/img/application.png",
+      image: "/syva-dev/img/application.png",
       tags: ["React", "Node.js", "PHP", "SQL", "Discord API"],
       technologies: ["JavaScript", "React", "PHP", "SQL"],
       features: ["Role application", "Discord integration", "User-friendly"],
-      demoUrl: "https://www.syva.uk/error/",
+      demoUrl: "/error/",
       repoUrl: "/",
       featured: true,
       category: "web",
@@ -147,12 +146,12 @@ export default function Projects() {
       title: "ShindoBoosterV2 - Shindo Life 2 Script",
       description:
         "A script for the game 'Shindo Life 2' that removes the cooldown for the Rell bloodline, allowing users to infinitely use the RC granted by this bloodline. Built using Lua and Roblox, this script provides an enhanced experience by bypassing the 2-hour cooldown.",
-      image: "https://www.syva.uk/svya-dev/img/slbv2.png",
+      image: "/syva-dev/img/slbv2.png",
       tags: ["Lua", "Roblox"],
       technologies: ["Lua", "Roblox"],
       features: ["Cooldown removal", "Enhanced experience"],
-      demoUrl: "https://www.syva.uk/error/",
-      repoUrl: "https://www.syva.uk/error/",
+      demoUrl: "/error/",
+      repoUrl: "/error/",
       category: "game",
     },
     {
@@ -160,12 +159,12 @@ export default function Projects() {
       title: "Discord Bot Hoster",
       description:
         "A program that allows users to host a Discord bot without programming. Users only need to provide a few details, and they can fully control the bot. Built with Java, this tool simplifies the process of bot hosting, making it accessible for non-developers.",
-      image: "https://www.syva.uk/svya-dev/img/slbv2.png",
+      image: "/syva-dev/img/slbv2.png",
       tags: ["Java"],
       technologies: ["Java"],
       features: ["Easy bot hosting", "No programming required"],
-      demoUrl: "https://www.syva.uk/BotHoster/",
-      repoUrl: "https://www.syva.uk/BotHoster/",
+      demoUrl: "/BotHoster/",
+      repoUrl: "/BotHoster/",
       category: "app",
     },
     {
@@ -173,12 +172,12 @@ export default function Projects() {
       title: "Main Domain -  Support Portal",
       description:
         "A web platform where users could create tickets for different cases, such as general requests, reports, and unban requests. The system provided an easy-to-use interface where users could select a category and submit their issues efficiently. Built with JavaScript, React, PHP, and SQL, it was an essential tool for managing Discord server requests and reports.",
-      image: "https://www.syva.uk/svya-dev/img/awtns.png",
+      image: "/syva-dev/img/awtns.png",
       tags: ["Report", "Question", "Discord"],
       technologies: ["CSS", "JS", "HTML", "PHP", "SQL", "Discord API"],
       features: ["Report System", "Discord Integration", "Ticket Management"],
-      demoUrl: "https://www.syva.uk/oldawtns/",
-      repoUrl: "https://www.syva.uk/oldawtns/",
+      demoUrl: "/oldawtns/",
+      repoUrl: "/oldawtns/",
       category: "web",
     },
   ]
@@ -242,7 +241,6 @@ export default function Projects() {
     <section id="projects" className="py-24 px-4 relative bg-gradient-to-b  to-black">
       <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b to-transparent" />
       <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t to-transparent" />
-
 
       <div
         className="absolute top-1/4 right-0 w-64 h-64 bg-red-500/10 rounded-full blur-3xl animate-pulse"
@@ -321,11 +319,9 @@ export default function Projects() {
 
                     <div className="absolute inset-0 rounded-xl border-2 border-red-500/30 animate-pulse pointer-events-none"></div>
                     <div className="relative group overflow-hidden rounded-xl border border-red-500/10 shadow-xl">
-                      <Image
+                      <img
                         src={featuredProjects[currentFeaturedIndex].image || "/placeholder.svg"}
                         alt={featuredProjects[currentFeaturedIndex].title}
-                        width={800}
-                        height={600}
                         className="object-cover w-full aspect-video group-hover:scale-105 transition-transform duration-500"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
@@ -509,11 +505,10 @@ export default function Projects() {
                       </div>
 
                       <div className="relative h-48 w-full overflow-hidden">
-                        <Image
+                        <img
                           src={project.image || "/placeholder.svg"}
                           alt={project.title}
-                          fill
-                          className="object-cover group-hover:scale-105 transition-transform duration-500"
+                          className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
                         <div className="absolute top-4 left-4 flex items-center gap-2">

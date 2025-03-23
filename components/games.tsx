@@ -1,9 +1,6 @@
 "use client"
 
-import type React from "react"
-
 import { useState, useRef, useEffect } from "react"
-import Image from "next/image"
 import { motion, useInView, AnimatePresence } from "framer-motion"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
@@ -44,16 +41,14 @@ import {
   Bookmark,
   Sparkles,
   Crown,
-  Check,
 } from "lucide-react"
 import Link from "next/link"
-import { toast } from "@/components/ui/use-toast"
 
 type Game = {
   id: number
   title: string
   description: string
-  image: string
+  img: string
   platform: string[]
   genre: string[]
   playTime?: number
@@ -72,7 +67,7 @@ type RobloxGame = {
   id: number
   title: string
   description: string
-  image: string
+  img: string
   visits: string
   likes: string
   created: string
@@ -96,7 +91,7 @@ const robloxGames: RobloxGame[] = [
     title: "Dragon Soul",
     description:
       "An anime-inspired MMO where players can train, fight, and evolve their characters. Battle against powerful foes, unlock new abilities, and become the ultimate warrior.",
-    image: "https://www.syva.uk/svya-dev/img/games/roblox-screenshots/roblox-games/Dragon-Soul/banner.png",
+    img: "/syva-dev/img/games/roblox-screenshots/roblox-games/Dragon-Soul/banner.png",
     visits: "142.5M",
     likes: "350.7K",
     created: "Dec 13, 2021",
@@ -111,18 +106,18 @@ const robloxGames: RobloxGame[] = [
     badgesEarned: "None",
     playTime: "5 days",
     screenshots: [
-      "https://www.syva.uk/svya-dev/img/games/roblox-screenshots/roblox-games/Dragon-Soul/pic2.png",
-      "https://www.syva.uk/svya-dev/img/games/roblox-screenshots/roblox-games/Dragon-Soul/pic3.png",
-      "https://www.syva.uk/svya-dev/img/games/roblox-screenshots/roblox-games/Dragon-Soul/pic4.png"
+      "/syva-dev/img/games/roblox-screenshots/roblox-games/Dragon-Soul/pic2.png",
+      "/syva-dev/img/games/roblox-screenshots/roblox-games/Dragon-Soul/pic3.png",
+      "/syva-dev/img/games/roblox-screenshots/roblox-games/Dragon-Soul/pic4.png",
     ],
-    videoUrl: "https://www.youtube.com/watch?v=ZyMIotzXxQQ"
-  },  
+    videoUrl: "https://www.youtube.com/watch?v=ZyMIotzXxQQ",
+  },
   {
     id: 102,
     title: "Blox Fruits",
-    description: 
+    description:
       "An action-packed adventure game where players train to become powerful fighters or skilled pirates. Explore vast islands, discover powerful fruits, and master new abilities to dominate battles.",
-    image: "https://www.syva.uk/svya-dev/img/games/roblox-screenshots/roblox-games/blox-fruit/banner.png",
+    img: "/syva-dev/img/games/roblox-screenshots/roblox-games/blox-fruit/banner.png",
     visits: "30B+",
     likes: "6.2M",
     created: "2019-01-16",
@@ -137,18 +132,18 @@ const robloxGames: RobloxGame[] = [
     playTime: "2 years",
     link: "https://www.roblox.com/games/2753915549/Blox-Fruits",
     screenshots: [
-      "https://www.syva.uk/svya-dev/img/games/roblox-screenshots/roblox-games/blox-fruit/pic2.png",
-      "https://www.syva.uk/svya-dev/img/games/roblox-screenshots/roblox-games/blox-fruit/pic3.png",
-      "https://www.syva.uk/svya-dev/img/games/roblox-screenshots/roblox-games/blox-fruit/pic4.png"
+      "/syva-dev/img/games/roblox-screenshots/roblox-games/blox-fruit/pic2.png",
+      "/syva-dev/img/games/roblox-screenshots/roblox-games/blox-fruit/pic3.png",
+      "/syva-dev/img/games/roblox-screenshots/roblox-games/blox-fruit/pic4.png",
     ],
-    videoUrl: "https://www.youtube.com/watch?v=ObNyxwkc7p0"
+    videoUrl: "https://www.youtube.com/watch?v=ObNyxwkc7p0",
   },
   {
     id: 103,
     title: "Blade Ball",
-    description: 
+    description:
       "A fast-paced action game where players deflect a homing ball using swords, unlock unique abilities, and compete to be the last one standing in intense battles.",
-    image: "https://www.syva.uk/svya-dev/img/games/roblox-screenshots/roblox-games/blade-ball/banner.png",
+    img: "/syva-dev/img/games/roblox-screenshots/roblox-games/blade-ball/banner.png",
     visits: "2B+",
     likes: "2.5M",
     created: "2023-07-04",
@@ -163,43 +158,43 @@ const robloxGames: RobloxGame[] = [
     playTime: "9 Months",
     link: "https://www.roblox.com/games/13772394625/Blade-Ball",
     screenshots: [
-      "https://www.syva.uk/svya-dev/img/games/roblox-screenshots/roblox-games/blade-ball/pic2.png",
-      "https://www.syva.uk/svya-dev/img/games/roblox-screenshots/roblox-games/blade-ball/pic3.png",
-      "https://www.syva.uk/svya-dev/img/games/roblox-screenshots/roblox-games/blade-ball/pic4.png"
+      "/syva-dev/img/games/roblox-screenshots/roblox-games/blade-ball/pic2.png",
+      "/syva-dev/img/games/roblox-screenshots/roblox-games/blade-ball/pic3.png",
+      "/syva-dev/img/games/roblox-screenshots/roblox-games/blade-ball/pic4.png",
     ],
-    videoUrl: "https://www.youtube.com/watch?v=b2zMU43qqXM"
- },
- {
-  id: 104,
-  title: "Shindo Life",
-  description: 
-    "An open-world RPG inspired by Naruto, where players train to become powerful shinobi, unlock unique bloodlines, and engage in intense battles across different villages.",
-  image: "https://www.syva.uk/svya-dev/img/games/roblox-screenshots/roblox-games/shindo-life/banner.png",
-  visits: "2.5B+",
-  likes: "1.8M",
-  created: "2020-03-19",
-  lastPlayed: "5 days ago",
-  favorite: false,
-  rating: 4.6,
-  genre: ["RPG", "Fighting", "Adventure"],
-  developer: "RELL World",
-  playerCount: "30K-80K",
-  gamelevel: "max-Rank: 202",
-  badgesEarned: "Varies",
-  playTime: "2 years",
-  link: "https://www.roblox.com/games/4616652839/Shindo-Life",
-  screenshots: [
-    "https://syva.uk/svya-dev/img/games/roblox-screenshots/roblox-games/shindo-life/pic2.png",
-    "https://syva.uk/svya-dev/img/games/roblox-screenshots/roblox-games/shindo-life/pic3.png",
-    "https://syva.uk/svya-dev/img/games/roblox-screenshots/roblox-games/shindo-life/pic4.png"
-  ],
-  videoUrl: "https://youtu.be/-9PEaV7Ptjc"
+    videoUrl: "https://www.youtube.com/watch?v=b2zMU43qqXM",
+  },
+  {
+    id: 104,
+    title: "Shindo Life",
+    description:
+      "An open-world RPG inspired by Naruto, where players train to become powerful shinobi, unlock unique bloodlines, and engage in intense battles across different villages.",
+    img: "/syva-dev/img/games/roblox-screenshots/roblox-games/shindo-life/banner.png",
+    visits: "2.5B+",
+    likes: "1.8M",
+    created: "2020-03-19",
+    lastPlayed: "5 days ago",
+    favorite: false,
+    rating: 4.6,
+    genre: ["RPG", "Fighting", "Adventure"],
+    developer: "RELL World",
+    playerCount: "30K-80K",
+    gamelevel: "max-Rank: 202",
+    badgesEarned: "Varies",
+    playTime: "2 years",
+    link: "https://www.roblox.com/games/4616652839/Shindo-Life",
+    screenshots: [
+      "/syva-dev/img/games/roblox-screenshots/roblox-games/shindo-life/pic2.png",
+      "/syva-dev/img/games/roblox-screenshots/roblox-games/shindo-life/pic3.png",
+      "/syva-dev/img/games/roblox-screenshots/roblox-games/shindo-life/pic4.png",
+    ],
+    videoUrl: "https://youtu.be/-9PEaV7Ptjc",
   },
   {
     id: 105,
     title: "Creation Favorite",
     description: "This is a game that I created and is one of my favorites.",
-    image: "https://www.syva.uk/svya-dev/img/slbv2.png",
+    img: "/syva-dev/img/slbv2.png",
     visits: "N/A",
     likes: "N/A",
     created: "N/A",
@@ -212,13 +207,9 @@ const robloxGames: RobloxGame[] = [
     gamelevel: "N/A",
     badgesEarned: "N/A",
     playTime: "N/A",
-    link: "https://www.syva.uk/svya-dev/img/slbv2.png",
-    screenshots: [
-      "https://www.syva.uk/svya-dev/img/slbv2.png",
-      "https://www.syva.uk/svya-dev/img/slbv2.png",
-      "https://www.syva.uk/svya-dev/img/slbv2.png",
-    ],
-    videoUrl: "https://www.syva.uk/svya-dev/img/slbv2.png",
+    link: "/syva-dev/img/slbv2.png",
+    screenshots: ["/syva-dev/img/slbv2.png", "/syva-dev/img/slbv2.png", "/syva-dev/img/slbv2.png"],
+    videoUrl: "/syva-dev/img/slbv2.png",
   },
 ]
 
@@ -237,7 +228,7 @@ const parsePlayTime = (playTime: string): number => {
 
   const match = playTime.match(/(\d+)\s*(second|minute|hour|day|week|month|year)s?/i)
   if (match) {
-    const value = parseInt(match[1], 10)
+    const value = Number.parseInt(match[1], 10)
     const unit = match[2].toLowerCase()
     return value * (timeUnits[unit] || 0)
   }
@@ -264,7 +255,7 @@ export default function Games() {
   })
 
   const toggleFavorite = (gameId: number, isCreationFavorite = false) => {
-    if (isCreationFavorite) return 
+    if (isCreationFavorite) return
 
     setFavorites((prev) => {
       if (prev.includes(gameId)) {
@@ -349,7 +340,7 @@ export default function Games() {
       title: "Roblox",
       description:
         "A global platform where millions of people gather to imagine, create, and share experiences in immersive, user-generated 3D worlds.",
-      image: "https://www.syva.uk/svya-dev/img/games/roblox.png",
+      img: "/syva-dev/img/games/roblox.png",
       platform: ["PC", "Mobile", "Console"],
       genre: ["Platform", "MMO", "Sandbox"],
       playTime: 500,
@@ -360,9 +351,9 @@ export default function Games() {
       publisher: "Roblox Corporation",
       link: "https://www.roblox.com/",
       screenshots: [
-        "https://www.syva.uk/svya-dev/img/games/roblox-screenshots/Background.png",
-        "https://www.syva.uk/svya-dev/img/games/roblox-screenshots/4-games.png",
-        "https://www.syva.uk/svya-dev/img/games/roblox-screenshots/front.png",
+        "/syva-dev/img/games/roblox-screenshots/Background.png",
+        "/syva-dev/img/games/roblox-screenshots/4-games.png",
+        "/syva-dev/img/games/roblox-screenshots/front.png",
       ],
       videoUrl: "https://youtu.be/eAvXhNlO-rA?si=JDO-pGHaVTzENbxh",
       lastPlayed: "2 days ago",
@@ -372,7 +363,7 @@ export default function Games() {
       title: "Minecraft",
       description:
         "A sandbox video game where players explore a blocky, procedurally-generated 3D world with infinite terrain and craft tools and items.",
-      image: "https:/www.syva.uk/svya-dev/img/games/minecraft.png",
+      img: "/syva-dev/img/games/minecraft.png",
       platform: ["PC", "Mobile", "Console"],
       genre: ["Sandbox", "Survival", "Adventure"],
       playTime: 350,
@@ -382,18 +373,16 @@ export default function Games() {
       developer: "Mojang Studios",
       publisher: "Mojang Studios, Xbox Game Studios",
       link: "https://www.minecraft.net/",
-      screenshots: [
-        "/placeholder.svg?height=400&width=600"
-      ],
+      screenshots: ["/placeholder.svg?height=400&width=600"],
       videoUrl: "https://www.youtube.com/watch?v=example",
       lastPlayed: "1 week ago",
     },
     {
       id: 3,
       title: "The Elder Scrolls V: Skyrim",
-      description: 
+      description:
         "An open-world action RPG where players embark on an epic journey through the vast lands of Skyrim, battling dragons, exploring dungeons, and shaping their destiny.",
-      image: "https:/www.syva.uk/svya-dev/img/games/skyrim.png",
+      img: "/syva-dev/img/games/skyrim.png",
       platform: ["PC", "PlayStation", "Xbox", "Nintendo Switch"],
       genre: ["RPG", "Open-World", "Action"],
       playTime: 500,
@@ -403,18 +392,16 @@ export default function Games() {
       developer: "Bethesda Game Studios",
       publisher: "Bethesda Softworks",
       link: "https://elderscrolls.bethesda.net/en/skyrim",
-      screenshots: [
-        "/placeholder.svg?height=400&width=600"
-      ],
+      screenshots: ["/placeholder.svg?height=400&width=600"],
       videoUrl: "https://www.youtube.com/watch?v=JSRtYpNRoN0",
-      lastPlayed: "2 weeks ago"
-    },          
+      lastPlayed: "2 weeks ago",
+    },
     {
       id: 4,
       title: "VRChat",
-      description: 
+      description:
         "A social VR platform where players can create, explore, and interact in user-generated worlds with full-body avatars and voice chat.",
-      image: "https:/www.syva.uk/svya-dev/img/games/vrchat.png",
+      img: "/syva-dev/img/games/vrchat.png",
       platform: ["PC", "VR Headsets"],
       genre: ["Social", "VR", "Multiplayer"],
       playTime: 500,
@@ -424,17 +411,15 @@ export default function Games() {
       developer: "VRChat Inc.",
       publisher: "VRChat Inc.",
       link: "https://hello.vrchat.com/",
-      screenshots: [
-        "/"
-      ],
+      screenshots: ["/"],
       videoUrl: "https://www.youtube.com/watch?v=_T2V1xr7F0g",
-      lastPlayed: "2 days ago"
-    },    
+      lastPlayed: "2 days ago",
+    },
   ]
 
   const filteredRobloxGames =
     robloxFilter === "all"
-      ? [...robloxGames] 
+      ? [...robloxGames]
       : robloxFilter === "favorite"
         ? robloxGames.filter((game) => favorites.includes(game.id))
         : robloxGames.filter((game) => game.genre.includes(robloxFilter))
@@ -590,7 +575,6 @@ export default function Games() {
     if (sharedGameId && !isNaN(Number(sharedGameId))) {
       const gameId = Number.parseInt(sharedGameId, 10)
 
-
       const game = robloxGames.find((g) => g.id === gameId)
 
       if (game) {
@@ -657,11 +641,10 @@ export default function Games() {
 
                     <Card className="h-full overflow-hidden bg-black/50 backdrop-blur-sm border-red-500/10 hover:border-red-500/30 transition-all duration-300 cursor-pointer group">
                       <div className="relative h-48 overflow-hidden">
-                        <Image
-                          src={game.image || "/placeholder.svg"}
+                        <img
+                          src={game.img || "/placeholder.svg"}
                           alt={game.title}
-                          fill
-                          className="object-cover group-hover:scale-105 transition-transform duration-500"
+                          className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
                         <div className="absolute top-4 right-4">{renderStarRating(game.rating)}</div>
@@ -740,16 +723,15 @@ export default function Games() {
                   <motion.div
                     variants={glowVariants}
                     initial="inactive"
-                    whileHover={{ y: 0 }} 
+                    whileHover={{ y: 0 }}
                     className="h-full rounded-xl overflow-hidden opacity-70"
                   >
                     <Card className="h-full overflow-hidden bg-black/50 backdrop-blur-sm border-red-500/10 transition-all duration-300 group">
                       <div className="relative h-48 overflow-hidden">
-                        <Image
-                          src={game.image || "/placeholder.svg"}
+                        <img
+                          src={game.img || "/placeholder.svg"}
                           alt={game.title}
-                          fill
-                          className="object-cover group-hover:scale-105 transition-transform duration-500"
+                          className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
                         <div className="absolute top-4 right-4">{renderStarRating(game.rating)}</div>
@@ -929,11 +911,10 @@ export default function Games() {
                         animate="active"
                         whileHover="hover"
                       >
-                        <Image
-                          src={selectedGame.image || "/placeholder.svg"}
+                        <img
+                          src={selectedGame.img || "/placeholder.svg"}
                           alt={selectedGame.title}
-                          fill
-                          className="object-cover"
+                          className="object-cover w-full h-full"
                         />
 
                         <div className="absolute top-2 right-2 animate-pulse">
@@ -1019,11 +1000,10 @@ export default function Games() {
                       animate="active"
                       whileHover="hover"
                     >
-                      <Image
+                      <img
                         src={selectedGame.screenshots[currentScreenshotIndex] || "/placeholder.svg"}
                         alt={`${selectedGame.title} screenshot ${currentScreenshotIndex + 1}`}
-                        fill
-                        className="object-cover"
+                        className="object-cover w-full h-full"
                       />
 
                       <Button
@@ -1108,18 +1088,20 @@ export default function Games() {
                       <div>
                         <h4 className="text-lg font-medium mb-4">My Stats</h4>
                         <div className="space-y-6">
-                            <div>
+                          <div>
                             <div className="flex justify-between mb-2">
                               <span className="text-gray-400">Play Time</span>
                               <span>{selectedGame.playTime}</span>
                             </div>
                             <div className="h-2 w-full bg-gray-800 rounded-full overflow-hidden">
                               <div
-                              className="h-full bg-red-500 rounded-full"
-                              style={{ width: `${Math.min(100, parsePlayTime(String(selectedGame.playTime) || "0") / 10)}%` }}
+                                className="h-full bg-red-500 rounded-full"
+                                style={{
+                                  width: `${Math.min(100, parsePlayTime(String(selectedGame.playTime) || "0") / 10)}%`,
+                                }}
                               />
                             </div>
-                            </div>
+                          </div>
 
                           <div>
                             <div className="flex justify-between mb-2">
@@ -1226,11 +1208,10 @@ export default function Games() {
                         animate="active"
                         whileHover="hover"
                       >
-                        <Image
-                          src={selectedRobloxGame.image || "/placeholder.svg"}
+                        <img
+                          src={selectedRobloxGame.img || "/placeholder.svg"}
                           alt={selectedRobloxGame.title}
-                          fill
-                          className="object-cover"
+                          className="object-cover w-full h-full"
                         />
                         {selectedRobloxGame.favorite && (
                           <div className="absolute top-3 right-3 bg-red-500/90 p-1.5 rounded-full">
@@ -1326,11 +1307,10 @@ export default function Games() {
                       animate="active"
                       whileHover="hover"
                     >
-                      <Image
+                      <img
                         src={selectedRobloxGame.screenshots[currentScreenshotIndex] || "/placeholder.svg"}
                         alt={`${selectedRobloxGame.title} screenshot ${currentScreenshotIndex + 1}`}
-                        fill
-                        className="object-cover"
+                        className="object-cover w-full h-full"
                       />
 
                       <Button
@@ -1370,115 +1350,121 @@ export default function Games() {
                         <h4 className="text-lg font-medium mb-2">Gameplay Video</h4>
                         <div className="relative h-[250px] rounded-lg overflow-hidden bg-black/50 flex items-center justify-center">
                           <Play className="h-12 w-12 text-red-500" />
-                            <span className="ml-2">Video preview not available. YouTube connection refused.</span>
+                          <span className="ml-2">Video preview not available. YouTube connection refused.</span>
                         </div>
                       </div>
                     )}
                   </TabsContent>
 
-                    <TabsContent value="stats" className="space-y-6 pr-2">
+                  <TabsContent value="stats" className="space-y-6 pr-2">
                     <div className="grid md:grid-cols-2 gap-8">
                       <div>
-                      <h4 className="text-lg font-medium mb-4">Game Stats</h4>
-                      <div className="space-y-4">
-                        <div className="flex justify-between">
-                        <span className="text-gray-400">Developer</span>
-                        <span>{selectedRobloxGame.developer}</span>
+                        <h4 className="text-lg font-medium mb-4">Game Stats</h4>
+                        <div className="space-y-4">
+                          <div className="flex justify-between">
+                            <span className="text-gray-400">Developer</span>
+                            <span>{selectedRobloxGame.developer}</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span className="text-gray-400">Created</span>
+                            <span>{selectedRobloxGame.created}</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span className="text-gray-400">Visits</span>
+                            <span>{selectedRobloxGame.visits}</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span className="text-gray-400">Likes</span>
+                            <span>{selectedRobloxGame.likes}</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span className="text-gray-400">Genres</span>
+                            <span>{selectedRobloxGame.genre.join(", ")}</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span className="text-gray-400">Player Count</span>
+                            <span>{selectedRobloxGame.playerCount}</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span className="text-gray-400">Last Played</span>
+                            <span>{selectedRobloxGame.lastPlayed}</span>
+                          </div>
                         </div>
-                        <div className="flex justify-between">
-                        <span className="text-gray-400">Created</span>
-                        <span>{selectedRobloxGame.created}</span>
-                        </div>
-                        <div className="flex justify-between">
-                        <span className="text-gray-400">Visits</span>
-                        <span>{selectedRobloxGame.visits}</span>
-                        </div>
-                        <div className="flex justify-between">
-                        <span className="text-gray-400">Likes</span>
-                        <span>{selectedRobloxGame.likes}</span>
-                        </div>
-                        <div className="flex justify-between">
-                        <span className="text-gray-400">Genres</span>
-                        <span>{selectedRobloxGame.genre.join(", ")}</span>
-                        </div>
-                        <div className="flex justify-between">
-                        <span className="text-gray-400">Player Count</span>
-                        <span>{selectedRobloxGame.playerCount}</span>
-                        </div>
-                        <div className="flex justify-between">
-                        <span className="text-gray-400">Last Played</span>
-                        <span>{selectedRobloxGame.lastPlayed}</span>
-                        </div>
-                      </div>
                       </div>
 
                       <div>
-                      <h4 className="text-lg font-medium mb-4">My Progress</h4>
-                      <div className="space-y-6">
-                        <div>
-                        <div className="flex justify-between mb-2">
-                          <span className="text-gray-400">Playtime</span>
-                          <span>{selectedRobloxGame.playTime ?? "N/A"}</span>
-                        </div>
-                        <div className="h-2 w-full bg-gray-800 rounded-full overflow-hidden">
-                          <motion.div
-                          initial={{ width: 0 }}
-                          animate={{ width: `${selectedRobloxGame.playTime ? (parseFloat(selectedRobloxGame.playTime) / 100) * 100 : 0}%` }}
-                          transition={{ duration: 1, delay: 0.2 }}
-                          className="h-full bg-red-500 rounded-full"
-                          />
-                        </div>
+                        <h4 className="text-lg font-medium mb-4">My Progress</h4>
+                        <div className="space-y-6">
+                          <div>
+                            <div className="flex justify-between mb-2">
+                              <span className="text-gray-400">Playtime</span>
+                              <span>{selectedRobloxGame.playTime ?? "N/A"}</span>
+                            </div>
+                            <div className="h-2 w-full bg-gray-800 rounded-full overflow-hidden">
+                              <motion.div
+                                initial={{ width: 0 }}
+                                animate={{
+                                  width: `${selectedRobloxGame.playTime ? (Number.parseFloat(selectedRobloxGame.playTime) / 100) * 100 : 0}%`,
+                                }}
+                                transition={{ duration: 1, delay: 0.2 }}
+                                className="h-full bg-red-500 rounded-full"
+                              />
+                            </div>
+                          </div>
+
+                          <div>
+                            <div className="flex justify-between mb-2">
+                              <span className="text-gray-400">Badges Earned</span>
+                              <span>{selectedRobloxGame.badgesEarned ?? "N/A"}</span>
+                            </div>
+                            <div className="h-2 w-full bg-gray-800 rounded-full overflow-hidden">
+                              <motion.div
+                                initial={{ width: 0 }}
+                                animate={{
+                                  width: `${selectedRobloxGame.badgesEarned ? (Number(selectedRobloxGame.badgesEarned) / 100) * 100 : 0}%`,
+                                }}
+                                transition={{ duration: 1, delay: 0.4 }}
+                                className="h-full bg-red-500 rounded-full"
+                              />
+                            </div>
+                          </div>
+
+                          <div>
+                            <div className="flex justify-between mb-2">
+                              <span className="text-gray-400">Game Rank</span>
+                              <span>{selectedRobloxGame.gamelevel ?? "N/A"}</span>
+                            </div>
+                            <div className="h-2 w-full bg-gray-800 rounded-full overflow-hidden">
+                              <motion.div
+                                initial={{ width: 0 }}
+                                animate={{
+                                  width: `${selectedRobloxGame.gamelevel ? (Number(selectedRobloxGame.gamelevel) / 100) * 100 : 0}%`,
+                                }}
+                                transition={{ duration: 1, delay: 0.6 }}
+                                className="h-full bg-red-500 rounded-full"
+                              />
+                            </div>
+                          </div>
                         </div>
 
-                        <div>
-                        <div className="flex justify-between mb-2">
-                          <span className="text-gray-400">Badges Earned</span>
-                          <span>{selectedRobloxGame.badgesEarned ?? "N/A"}</span>
+                        <div className="mt-6">
+                          <h4 className="text-sm font-medium mb-2">Game Rating</h4>
+                          <div className="flex items-center">
+                            <div className="flex-1">
+                              <Slider
+                                defaultValue={[selectedRobloxGame.rating * 20]}
+                                max={100}
+                                step={1}
+                                disabled
+                                className="w-full"
+                              />
+                            </div>
+                            <div className="ml-4 min-w-[60px] text-center">{selectedRobloxGame.rating}/5</div>
+                          </div>
                         </div>
-                        <div className="h-2 w-full bg-gray-800 rounded-full overflow-hidden">
-                          <motion.div
-                          initial={{ width: 0 }}
-                          animate={{ width: `${selectedRobloxGame.badgesEarned ? (Number(selectedRobloxGame.badgesEarned) / 100) * 100 : 0}%` }}
-                          transition={{ duration: 1, delay: 0.4 }}
-                          className="h-full bg-red-500 rounded-full"
-                          />
-                        </div>
-                        </div>
-
-                        <div>
-                        <div className="flex justify-between mb-2">
-                          <span className="text-gray-400">Game Rank</span>
-                          <span>{selectedRobloxGame.gamelevel ?? "N/A"}</span>
-                        </div>
-                        <div className="h-2 w-full bg-gray-800 rounded-full overflow-hidden">
-                          <motion.div
-                          initial={{ width: 0 }}
-                          animate={{ width: `${selectedRobloxGame.gamelevel ? (Number(selectedRobloxGame.gamelevel) / 100) * 100 : 0}%` }}
-                          transition={{ duration: 1, delay: 0.6 }}
-                          className="h-full bg-red-500 rounded-full"
-                          />
-                        </div>
-                        </div>
-                      </div>
-
-                      <div className="mt-6">
-                        <h4 className="text-sm font-medium mb-2">Game Rating</h4>
-                        <div className="flex items-center">
-                        <div className="flex-1">
-                          <Slider
-                          defaultValue={[selectedRobloxGame.rating * 20]}
-                          max={100}
-                          step={1}
-                          disabled
-                          className="w-full"
-                          />
-                        </div>
-                        <div className="ml-4 min-w-[60px] text-center">{selectedRobloxGame.rating}/5</div>
-                        </div>
-                      </div>
                       </div>
                     </div>
-                    </TabsContent>
+                  </TabsContent>
                 </Tabs>
               </div>
             ) : (
@@ -1564,11 +1550,10 @@ export default function Games() {
                             >
                               <Card className="overflow-hidden bg-black/50 backdrop-blur-sm border-yellow-500/30 hover:border-yellow-500/50 transition-all duration-300 h-full">
                                 <div className="relative h-40 overflow-hidden">
-                                  <Image
-                                    src={game.image || "/placeholder.svg"}
+                                  <img
+                                    src={game.img || "/placeholder.svg"}
                                     alt={game.title}
-                                    fill
-                                    className="object-cover"
+                                    className="object-cover w-full h-full"
                                   />
                                   <div className="absolute top-3 right-3 bg-yellow-500/90 p-1.5 rounded-full">
                                     <Crown className="h-4 w-4 text-white" />
@@ -1631,11 +1616,10 @@ export default function Games() {
                           >
                             <Card className="overflow-hidden bg-black/50 backdrop-blur-sm border-red-500/10 hover:border-red-500/30 transition-all duration-300 h-full">
                               <div className="relative h-40 overflow-hidden">
-                                <Image
-                                  src={game.image || "/placeholder.svg"}
+                                <img
+                                  src={game.img || "/placeholder.svg"}
                                   alt={game.title}
-                                  fill
-                                  className="object-cover"
+                                  className="object-cover w-full h-full"
                                 />
                                 <div className="absolute top-3 right-3 flex gap-2">
                                   <div
