@@ -8,12 +8,10 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
 
-  // Handle scroll events
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10)
 
-      // Close menu on any scroll
       if (isMenuOpen) {
         setIsMenuOpen(false)
       }
@@ -21,13 +19,11 @@ export default function Header() {
 
     window.addEventListener("scroll", handleScroll)
 
-    // Clean up
     return () => {
       window.removeEventListener("scroll", handleScroll)
     }
   }, [isMenuOpen])
 
-  // Handle body scroll locking
   useEffect(() => {
     if (isMenuOpen) {
       document.body.style.overflow = "hidden"
@@ -60,14 +56,12 @@ export default function Header() {
       >
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between">
-            {/* Logo */}
             <Link href="/" className="text-xl font-bold">
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-red-500 to-red-700">
                 syva<span className="font-light">.uk</span>
               </span>
             </Link>
 
-            {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center space-x-1">
               {navLinks.map((link) => (
                 <Link
@@ -81,7 +75,6 @@ export default function Header() {
               ))}
             </nav>
 
-            {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="md:hidden z-50 p-2 text-white hover:text-red-500 transition-colors"
@@ -93,10 +86,8 @@ export default function Header() {
         </div>
       </header>
 
-      {/* Mobile Menu Overlay */}
       {isMenuOpen && (
         <div className="fixed inset-0 bg-black z-50 md:hidden">
-          {/* Close Button */}
           <div className="absolute top-4 right-4">
             <button
               onClick={() => setIsMenuOpen(false)}
@@ -107,7 +98,6 @@ export default function Header() {
             </button>
           </div>
 
-          {/* Menu Content */}
           <div className="h-full flex flex-col justify-center items-center px-4">
             <nav className="w-full max-w-sm">
               <ul className="space-y-6">
