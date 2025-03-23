@@ -10,6 +10,7 @@ import Services from "@/components/services"
 import Games from "@/components/games"
 import Footer from "@/components/footer"
 import Header from "@/components/header"
+import Build from "@/components/build"
 
 import "./layout"
 import "./globals.css"
@@ -29,6 +30,7 @@ export default function Home() {
       <Projects />
       <Services />
       <Games />
+      <Build />
       <Testimonials />
       <Contact />
       <Footer />

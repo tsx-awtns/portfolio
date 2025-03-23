@@ -45,6 +45,7 @@ export default function Header() {
     { href: "#contact", label: "Contact" },
     { href: "#services", label: "Service" },
     { href: "#games", label: "Games" },
+    { href: "#build", label: "Build" },
   ]
 
   return (
