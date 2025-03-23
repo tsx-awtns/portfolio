@@ -116,6 +116,11 @@ export default function Footer() {
                   syva-team@gmail.com
                 </a>
               </li>
+              <li>
+                <p className="text-gray-400 transition-colors">
+                  Build-Version: 3.1
+                </p>
+              </li>
             </ul>
           </div>
         </div>
