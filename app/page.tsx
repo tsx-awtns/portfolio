@@ -11,6 +11,7 @@ import Games from "@/components/games"
 import Footer from "@/components/footer"
 import Header from "@/components/header"
 import Build from "@/components/build"
+import SyvaTeam from "@/components/syva-team"
 
 import "./layout"
 import "./globals.css"
@@ -31,6 +32,7 @@ export default function Home() {
       <Services />
       <Games />
       <Build />
+      <SyvaTeam />
       <Testimonials />
       <Contact />
       <Footer />

@@ -352,7 +352,6 @@ export default function Skills() {
             <p className="text-base sm:text-xl text-gray-400">Tracking my growth and expertise over time</p>
           </motion.div>
 
-          {/* Category Selection */}
           <motion.div variants={itemVariants} className="flex justify-center space-x-2 sm:space-x-4 mb-4 sm:mb-8">
             {Object.keys(skillCategories).map((category) => (
               <button
@@ -360,16 +359,14 @@ export default function Skills() {
                 onClick={() => setActiveCategory(category)}
                 className={`px-3 sm:px-6 py-1 sm:py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 ${
                   activeCategory === category
-                    ? "bg-red-500 text-white shadow-lg shadow-red-500/20"
-                    : "bg-black/30 text-gray-400 border border-red-500/20 hover:bg-black/50"
+                    ? "bg-red-500 hover:bg-red-600 shadow-md shadow-red-500/20"
+                    : "bg-black/30 text-white hover:bg-red-500/10 hover:text-red-500 border border-red-500/10"
                 }`}
               >
                 {category.charAt(0).toUpperCase() + category.slice(1)}
               </button>
             ))}
           </motion.div>
-
-          {/* Skill Cards */}
           <motion.div variants={itemVariants}>{renderSkillCards()}</motion.div>
 
           <div className="grid md:grid-cols-2 gap-4 sm:gap-8 md:gap-16 items-start mt-4 sm:mt-8 md:mt-16">

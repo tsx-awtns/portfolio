@@ -117,8 +117,8 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <p className="text-gray-400 transition-colors">
-                  Build-Version: 3.1
+                <p className="text-gray-400 text-sm transition-colors">
+                  Build-Version: <span className="font-mono">20v9.1</span>
                 </p>
               </li>
             </ul>

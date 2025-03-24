@@ -41,7 +41,7 @@ export default function About() {
           <motion.div variants={itemVariants} className="text-center max-w-3xl mx-auto space-y-4">
             <span className="px-3 py-1 text-sm font-medium bg-red-500/10 text-red-500 rounded-full">About Me</span>
             <h2 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-red-500 to-red-700">
-              Passionate Developer & Designer
+              Passionate Web & Software Developer & Designer
             </h2>
             <p className="text-xl text-gray-400">Transforming ideas into exceptional digital experiences</p>
           </motion.div>
@@ -69,7 +69,7 @@ export default function About() {
               <div className="space-y-4">
                 <h3 className="text-3xl font-bold">Hello! I'm Syva.dev (twilight024)</h3>
                 <p className="text-lg text-gray-400">
-                  I'm a passionate web and software developer with almost 3 years of experience in building robust and
+                  I'm a passionate web and software developer with 4 years of experience in building robust and
                   scalable applications. I'm 18 years old and started programming in 2021, having introduced myself to
                   coding at the age of 12.
                 </p>

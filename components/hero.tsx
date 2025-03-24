@@ -9,26 +9,6 @@ import { motion } from "framer-motion"
 export default function Hero() {
   const glowRef = useRef<HTMLDivElement>(null)
 
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!glowRef.current) return
-
-      const { clientX, clientY } = e
-      const rect = glowRef.current.getBoundingClientRect()
-      const x = clientX - rect.left
-      const y = clientY - rect.top
-
-      glowRef.current.style.setProperty("--x", `${x}px`)
-      glowRef.current.style.setProperty("--y", `${y}px`)
-    }
-
-    window.addEventListener("mousemove", handleMouseMove)
-
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove)
-    }
-  }, [])
-
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center text-center px-4 overflow-hidden">
       <div
@@ -103,7 +83,7 @@ export default function Hero() {
         </motion.div>
 
         <motion.div
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce"
+          className="absolute bottom-50 left-1/2 -translate-x-1/2 animate-bounce"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.2, duration: 0.8 }}
@@ -114,7 +94,6 @@ export default function Hero() {
         </motion.div>
       </motion.div>
 
-      {/* Floating elements */}
       <div className="absolute top-1/4 left-10 w-64 h-64 bg-red-500/10 rounded-full blur-3xl" />
       <div className="absolute bottom-1/4 right-10 w-80 h-80 bg-red-700/10 rounded-full blur-3xl" />
     </section>
