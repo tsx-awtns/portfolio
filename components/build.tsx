@@ -132,7 +132,7 @@ export default function Build() {
           "A popular general-purpose scripting language that is especially suited to web development.",
         color: "#777bb4",
         gradient: "from-[#777bb4]/80 to-[#777bb4]/30",
-        logo: "/syva-dev/img/build-img/php.png",
+        logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/PHP-logo.svg/2560px-PHP-logo.svg.png",
         website: "https://www.php.net",
         usedFor: "Server-side scripting",
         featured: true,

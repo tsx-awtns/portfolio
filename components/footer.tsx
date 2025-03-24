@@ -105,6 +105,11 @@ export default function Footer() {
                   Games
                 </Link>
               </li>
+              <li>
+                <Link href="#build" className="text-gray-400 hover:text-red-500 transition-colors">
+                  Build
+                </Link>
+              </li>
             </ul>
           </div>
           <div className="space-y-4">
